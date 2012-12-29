@@ -44,3 +44,37 @@ old_accounts = Account.where("created_at < ?", 1.month.ago)
 old_abandoned_trials = AbandonedTrialQuery.new(old_accounts)
 
 ```
+
+## My Example
+
+`before`
+
+``` ruby
+
+   registrants = Registrant.where(:paid_at => nil).where(["cancelled_at = ? ", nil ]).where("created_at <= ?", Time.now - 3.days)
+
+    registrants.each do |registrant|
+      registrant.cancelled_by_system_due_to_not_paid!
+    end
+```
+
+`after`
+
+``` ruby
+
+class NeedCancelledRegistrant
+  def initialize(relation = Registrant.scoped)
+    @relation = relation
+  end
+
+  def find_each(&block)
+    @relation.
+      not_paid.not_cancelled.register_days_ago(3).
+      find_each(&block)
+  end
+end
+
+    NeedCancelledRegistrant.new.find_each do |r|
+      r.cancelled_by_system_due_to_not_paid!
+    end
+```
