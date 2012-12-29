@@ -10,7 +10,9 @@
 * action 的不是這個 model 核心業務的一部分（如清除舊資料...)
 * 有很多方式可以執行這樣的 action (例如 驗證帳號密碼). 這是四人幫裡的 [Strategy Patten](http://en.wikipedia.org/wiki/Strategy_pattern)
 
-``` ruby UserAuthenticator
+`UserAuthenticator`
+
+``` ruby 
 
 class UserAuthenticator
   def initialize(user)
@@ -30,8 +32,10 @@ end
 
 ```
 
+`SessionsController`
 
-``` ruby SessionsController
+
+``` ruby 
 
 class SessionsController < ApplicationController
   def create
