@@ -28,3 +28,42 @@ end
 ## Futher Reading
 
 * [Presenter](http://joncanady.com/blog/2012/01/11/presenters-cleaning-up-rails-views/)
+
+## My Example
+
+`before`
+
+`app/helper/registrtions_helper.rb`
+
+``` ruby
+module RegistrationsHelper
+  def render_registrant_status(registrant)
+    I18n.t("registrants_status.#{registrant.payment_state}")
+  end
+end
+``
+
+`app/models/registrant.rb`
+
+``` ruby
+
+class Registrant < ActiveRecord::Base
+  def payment_state
+    if paid_at && cancelled_at
+      "paid_but_cancelled"
+    end
+
+    if cancelled_at
+      "cancelled"
+    else
+      if paid_at
+        "paid"
+
+      else
+        "not_paid"
+      end
+    end
+  end
+end
+
+```
