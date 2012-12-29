@@ -68,3 +68,50 @@ class Registrant < ActiveRecord::Base
 end
 
 ```
+
+
+`after`
+
+`app/helper/registrtions_helper.rb`
+
+``` ruby
+module RegistrationsHelper
+  def render_registrant_status(registrant)
+    RegistrantPaymentState.new(registrant).chinese_payment_state
+  end
+end
+
+```
+
+`app/decorators/registrant_payment_state.rb`
+
+``` ruby
+class RegistrantPaymentState
+  def initialize(registrant)
+    @registrant = registrant
+  end
+
+  def payment_state
+    if @registrant.paid_at && @registrant.cancelled_at
+      "paid_but_cancelled"
+    end
+
+    if @registrant.cancelled_at
+      "cancelled"
+    else
+      if registrant.paid_at
+        "paid"
+
+      else
+        "not_paid"
+      end
+    end
+  end
+
+  def chinese_payment_state
+    I18n.t("registrants_status.#{payment_state}")
+  end
+end
+
+```
+
