@@ -52,3 +52,93 @@ class SessionsController < ApplicationController
 end
 
 ```
+
+
+### My Example
+
+`before`
+
+`app/controllers/comments_controller.rb`
+
+``` ruby
+  def create
+    @comment      = @resource.comments.new(params[:comment])
+    @comment.user = current_user
+
+    if @comment.save
+       @comment.notify_commneters
+      redirect_to(@resource, :notice => "已送出留言")
+    else
+      render :new
+    end
+  end
+```
+
+`app/models/comment.rb`
+
+``` ruby
+
+class Comment
+
+  def notify_commneters
+    teacher = resource.teacher
+    commenter = user
+
+    comment_related_users = []
+    comment_related_users << resource.comment_users
+    comment_related_users << teacher
+    comment_related_users.uniq!
+    comment_related_users.delete(commenter)
+
+    comment_related_users.each do |related_user|
+      CommentMailer.delay.comment_course_email(related_user, self)
+    end
+  end
+end
+
+```
+
+
+`after`
+
+`app/controllers/comments_controller.rb`
+
+``` ruby
+  def create
+    @comment      = @resource.comments.new(params[:comment])
+    @comment.user = current_user
+
+    if @comment.save
+       @comment.notify_commneters
+      redirect_to(@resource, :notice => "已送出留言")
+    else
+      render :new
+    end
+  end
+```
+
+`app/services/comment_notifier.rb`
+
+``` ruby
+
+class CommentNotifier
+
+  def self.notify_related_users(comment)
+    resource = comment.resource
+    teacher = resource.teacher
+    commenter = comment.user
+
+    comment_related_users = []
+    comment_related_users << resource.comment_users
+    comment_related_users << teacher
+    comment_related_users.uniq!
+    comment_related_users.delete(commenter)
+
+    
+    comment_related_users.each do |related_user|
+      CommentMailer.delay.comment_course_email(related_user, self)
+    end
+  end
+end
+
+```
