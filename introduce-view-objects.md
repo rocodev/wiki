@@ -41,7 +41,8 @@ module RegistrationsHelper
     I18n.t("registrants_status.#{registrant.payment_state}")
   end
 end
-``
+
+```
 
 `app/models/registrant.rb`
 
