@@ -109,7 +109,7 @@ end
     @comment.user = current_user
 
     if @comment.save
-       @comment.notify_commneters
+      CommentNotifer.notify_related_users(@comment)
       redirect_to(@resource, :notice => "已送出留言")
     else
       render :new
