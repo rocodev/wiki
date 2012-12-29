@@ -25,3 +25,7 @@
 * [[Extract Value Object]]
 * [[Extract Service Object]]
 * [[Extract Form Objects]]
+* [[Extract Query Objects]]
+* [[Introduce View Objects]]
+* [[Extract Policy Objects]]
+* [[Extract Decorators]]
