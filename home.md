@@ -6,7 +6,7 @@
 * [[Extract method]]
 * [[Extract Class]]
 * [[Extract Value Object]]
-* [[Extract Decorator]]
+* [[Extract Decorators]]
 * [[Extract Partial]]
 * [[Extract Service Object]]
 * [[Introduce Observer]] 
