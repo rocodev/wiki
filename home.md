@@ -25,6 +25,14 @@
 * <http://confreaks.com/videos/185-rubyconf2009-solid-ruby>
 * <http://www.slideshare.net/jcfischer/solid-ruby-solid-rails>
 * <http://www.slideshare.net/jcfischer/solid-ruby-solid-rails>
+* <http://www.aqee.net/s-o-l-i-d-class-design-principles/>
+
+* OCP  <http://ithelp.ithome.com.tw/question/10100008>
+* DRY <http://ithelp.ithome.com.tw/question/10100309>
+* SRP <http://ithelp.ithome.com.tw/question/10100557>
+* LSP <http://ithelp.ithome.com.tw/question/10100827>
+* ISP <http://ithelp.ithome.com.tw/question/10101106>
+* Law of Demeter <http://ithelp.ithome.com.tw/question/10101265>
 
 ## 7 Patterns to Refactor Fat ActiveRecord Models
 
