@@ -49,6 +49,8 @@ old_abandoned_trials = AbandonedTrialQuery.new(old_accounts)
 
 `before`
 
+`lib/tasks/drop_registrants_if_unpaid.rake`
+
 ``` ruby
 
    registrants = Registrant.where(:paid_at => nil).where(["cancelled_at = ? ", nil ]).where("created_at <= ?", Time.now - 3.days)
@@ -59,6 +61,8 @@ old_abandoned_trials = AbandonedTrialQuery.new(old_accounts)
 ```
 
 `after`
+
+`app/models/need_cancelled_registrant.rb`
 
 ``` ruby
 
@@ -74,7 +78,12 @@ class NeedCancelledRegistrant
   end
 end
 
-    NeedCancelledRegistrant.new.find_each do |r|
-      r.cancelled_by_system_due_to_not_paid!
-    end
+```
+
+`lib/tasks/drop_registrants_if_unpaid.rake`
+
+``` ruby
+NeedCancelledRegistrant.new.find_each do |r|
+  r.cancelled_by_system_due_to_not_paid!
+end
 ```
