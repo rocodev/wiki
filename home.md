@@ -33,4 +33,5 @@
 ## Futhrt Reading
 
 <http://ghendry.net/refactor.html>
+<https://learn.thoughtbot.com/refactoring>
 
