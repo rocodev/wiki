@@ -18,7 +18,8 @@ class Mailer < ActionMailer::Base
       to: email,
       subject: ’Thank you for completing the survey’
 )
-end end
+  end 
+end
 
 ```
 
@@ -32,6 +33,15 @@ class Mailer < ActionMailer::Base
       to: recipient.email,
       subject: ’Thank you for completing the survey’
 )
-end end
+  end 
+end
+
+class Recipient
+  def initialize(first_name, last_name, email)
+    @first_name = first_name
+    @last_name = last_name
+    @email = email
+  end
+end
 
 ```
