@@ -19,6 +19,10 @@
 * [[Use convention over configuration]]
 * [[Introduce Visitor]]
 
+### SOLID Principles
+
+<http://blog.rubybestpractices.com/posts/gregory/055-issue-23-solid-design.html>
+
 
 ## 7 Patterns to Refactor Fat ActiveRecord Models
 
