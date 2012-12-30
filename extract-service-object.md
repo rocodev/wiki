@@ -54,7 +54,9 @@ end
 ```
 
 
-### My Example
+## My Example
+
+### 第一個實例： 通知相關人士
 
 `before`
 
@@ -144,7 +146,7 @@ end
 ```
 
 
-另一個實例
+### 第二個實例 :  報名付款
 
 `before`
 
@@ -168,6 +170,8 @@ end
 ```
 
 `app/models/registrant.rb`
+
+``` ruby
 
   def pay!(amount, payment_type)
     r              = self
