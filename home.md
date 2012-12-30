@@ -35,6 +35,7 @@
 * LSP <http://ithelp.ithome.com.tw/question/10100827>
 * ISP <http://ithelp.ithome.com.tw/question/10101106>
 * Law of Demeter <http://ithelp.ithome.com.tw/question/10101265>
+* DIP <http://ithelp.ithome.com.tw/question/10101486>
 
 ## 7 Patterns to Refactor Fat ActiveRecord Models
 
