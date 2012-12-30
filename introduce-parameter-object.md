@@ -16,8 +16,8 @@ class Mailer < ActionMailer::Base
     @last_name = last_name
     mail(
       to: email,
-      subject: ’Thank you for completing the survey’
-)
+      subject: "Thank you for completing the survey"
+    )
   end 
 end
 
@@ -31,8 +31,8 @@ class Mailer < ActionMailer::Base
     @recipient = recipient
     mail(
       to: recipient.email,
-      subject: ’Thank you for completing the survey’
-)
+      subject: "Thank you for completing the survey"
+    )
   end 
 end
 
