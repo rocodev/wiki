@@ -27,6 +27,8 @@
 * <http://www.slideshare.net/jcfischer/solid-ruby-solid-rails>
 * <http://www.aqee.net/s-o-l-i-d-class-design-principles/>
 
+<hr>
+
 * OCP  <http://ithelp.ithome.com.tw/question/10100008>
 * DRY <http://ithelp.ithome.com.tw/question/10100309>
 * SRP <http://ithelp.ithome.com.tw/question/10100557>
