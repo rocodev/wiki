@@ -29,3 +29,7 @@
 * [[Introduce View Objects]]
 * [[Extract Policy Objects]]
 * [[Extract Decorators]]
+
+## Futhrt Reading
+
+<http://ghendry.net/refactor.html>
