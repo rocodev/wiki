@@ -142,3 +142,128 @@ class CommentNotifier
 end
 
 ```
+
+
+另一個實例
+
+`before`
+
+`app/controllers/registrations_controller.rb`
+
+``` ruby
+
+if payment.success?
+  current_user.pay_registration_with_paypal(amount, registration_id)
+end
+
+```
+
+`app/models/user.rb`
+
+``` ruby
+def pay_registration_with_paypal(amount, registration_id)
+  registration = Registrant.find(registration_id)
+  registration.pay!(amount, "paypal")
+end
+```
+
+`app/models/registrant.rb`
+
+  def pay!(amount, payment_type)
+    r              = self
+    r.paid_amount  = amount
+    r.payment_type = payment_type
+    r.paid_at      = Time.now
+    r.save
+    r.generate_invoice(amount, payment_type)
+    r.notify_teacher_payment_complete
+    r.notify_student_payment_complete
+  end
+
+  def notify_teacher_payment_complete
+    @student = self.user
+    @teacher = self.course.user
+    @course  = self.course
+    @amount  = self.paid_amount
+    @invoice = self.invoice
+    PaymentMailer.delay.notify_teacher_payment_complete(@student, @teacher, @course, @amount, @invoice)
+  end
+
+  def notify_student_payment_complete
+    @student = self.user
+    @teacher = self.course.user
+    @course  = self.course
+    @amount  = self.paid_amount
+    @invoice = self.invoice
+    PaymentMailer.delay.notify_student_payment_complete(@student, @teacher, @course, @amount, @invoice)
+  end
+
+
+  def generate_invoice(amount, payment_type)
+    r                    = self
+    invoice              = Invoice.new
+    invoice.resource     = r
+    invoice.amount       = amount
+    invoice.payment_type = payment_type
+    invoice.paid_at      = Time.now
+    invoice.user         = r.user
+    invoice.save
+  end
+```
+
+`after`
+
+`app/controllers/registrations_controller.rb`
+
+``` ruby
+if payment.success?
+    PayRegistrant.new(registration_id, amount, "paypal" ).pay!
+end
+```
+
+
+`app/services/pay_registrant.rb`
+
+``` ruby
+class PayRegistrant
+
+  def initialize(registrant_id, amount, payment_type)
+    @registrant = Registrant.find(registrant_id)
+    @amount = amount
+    @payment_type = payment_type
+  end
+
+  def pay!
+    update_registrant_paid_at
+    generate_invoice_for_registrant
+    notify_teacher_payment_complete
+    notify_student_payment_complete
+  end
+
+  def update_registrant_paid_at
+    @registrant.paid_amount  = @amount
+    @registrant.payment_type = @payment_type
+    @registrant.paid_at      = Time.now
+    @registrant.save
+  end
+
+  def generate_invoice_for_registrant
+    invoice = @registrant.build_invoice
+    invoice.amount       = @amount
+    invoice.payment_type = @payment_type
+    invoice.paid_at      = Time.now
+    invoice.user         = @registrant.user
+    invoice.save
+  end
+
+  def notify_teacher_payment_complete
+    PaymentMailer.delay.notify_teacher_payment_complete(@registrant)
+  end
+
+  def notify_student_payment_complete
+    PaymentMailer.delay.notify_student_payment_complete(@registrant)
+  end
+end
+```
+
+

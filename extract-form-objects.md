@@ -56,7 +56,7 @@ end
 
 有現成的 gem : [virtus](https://github.com/solnic/virtus) 可以使用。
 
-那麼 `SignupsControlle` 就可以寫成這樣。
+那麼 `SignupsController` 就可以寫成這樣。
 
 ``` ruby
 
