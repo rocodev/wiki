@@ -24,7 +24,7 @@
 * <http://blog.rubybestpractices.com/posts/gregory/055-issue-23-solid-design.html>
 * <http://confreaks.com/videos/185-rubyconf2009-solid-ruby>
 * <http://www.slideshare.net/jcfischer/solid-ruby-solid-rails>
-* <http://www.slideshare.net/jcfischer/solid-ruby-solid-rails>
+* <https://github.com/jimweirich/presentation_solid_ruby>
 * <http://www.aqee.net/s-o-l-i-d-class-design-principles/>
 
 <hr>
@@ -35,7 +35,9 @@
 * LSP <http://ithelp.ithome.com.tw/question/10100827>
 * ISP <http://ithelp.ithome.com.tw/question/10101106>
 * Law of Demeter <http://ithelp.ithome.com.tw/question/10101265>
-* DIP <http://ithelp.ithome.com.tw/question/10101486>
+* DIP 
+ - <http://ithelp.ithome.com.tw/question/10101486>
+ - <http://neethack.blogspot.tw/2010/02/dependency-injection-dip-pattern.html>
 
 ## 7 Patterns to Refactor Fat ActiveRecord Models
 
