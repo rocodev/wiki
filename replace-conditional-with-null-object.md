@@ -66,3 +66,35 @@ class NullAnswer
 end
 
 ```
+
+
+## My example
+
+`before`
+
+``` ruby
+# app/models/course.rb
+ def area_name
+   "#{course.area.try(:name)}" || "尚未設定開課地區"
+ end
+```
+
+`after`
+
+``` ruby
+# app/models/course.rb
+  def area_name
+    course_area = area  || NullArea.new
+    course_area.name
+  end
+
+# app/models/null_area.rb
+
+class NullArea
+  def name
+    "尚未設定開課地區"
+  end
+end
+
+```
+
