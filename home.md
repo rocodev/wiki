@@ -21,8 +21,10 @@
 
 ### SOLID Principles
 
-<http://blog.rubybestpractices.com/posts/gregory/055-issue-23-solid-design.html>
-
+* <http://blog.rubybestpractices.com/posts/gregory/055-issue-23-solid-design.html>
+* <http://confreaks.com/videos/185-rubyconf2009-solid-ruby>
+* <http://www.slideshare.net/jcfischer/solid-ruby-solid-rails>
+* <http://www.slideshare.net/jcfischer/solid-ruby-solid-rails>
 
 ## 7 Patterns to Refactor Fat ActiveRecord Models
 
