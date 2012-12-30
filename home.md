@@ -1,7 +1,7 @@
 
 ## Ruby Science
 
-* [[Replace Conditional with Polymorphism]]
+* [[Replace Conditional with Polymorphism]] \( TODO )
 * [[Replace conditional with Null Object]]
 * [[Extract method]]
 * [[Extract Class]]
@@ -11,7 +11,7 @@
 * [[Extract Service Object]]
 * [[Introduce Observer]] 
 * [[Introduce Parameter Object ]]
-* [[Use class as Factory]]
+* [[Use class as Factory]] \( TODO )
 * [[Move method]]
 * [[Inline class]]
 * [[Inject dependencies]]
@@ -33,3 +33,4 @@
 ## Futhrt Reading
 
 <http://ghendry.net/refactor.html>
+
